@@ -1,2 +1,2 @@
-# shell-scripts-collection
-Collection of useful shell scripts
+# Bash scripts collection
+Collection of useful shell(mostly Bash) scripts
