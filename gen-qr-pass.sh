@@ -26,9 +26,9 @@ while true ; do
   esac
 done
 shift "$(($OPTIND -1))"
-LENGTH="$*"
-if [ "$*" == "" ] ; then echo "script usage: $(basename $0) [ -s --strong (strong password with special characters)] [-h --help ] [-k --keep (keep password on the output)] [ password_length ]" >&2 ; exit 1 ; fi
 if [[ "$USAGE" = false ]]; then
+if [ "$*" == "" ] ; then echo "script usage: $(basename $0) [ -s --strong (strong password with special characters)] [-h --help ] [-k --keep (keep password on the output)] [ password_length ]" >&2 ; exit 1 ; fi
+LENGTH="$*"
 if [[ "$LENGTH" -gt 0 && "$STRONG" = true ]] ;then
 PASSWORD=$(pwgen -sync $LENGTH 1)
 qrencode -s 10 "$PASSWORD" -o qrpass.png
