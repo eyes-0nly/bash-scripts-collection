@@ -31,13 +31,10 @@ if [ "$*" == "" ] ; then echo -e "You did not specify a password length! \nscrip
 LENGTH="$*"
 if [[ $STRONG = true ]] ;then
 PASSWORD=$(pwgen -sync $LENGTH 1)
-qrencode -s 10 "$PASSWORD" -o qrpass.png
 else
-if [[ $STRONG = false ]] ;then
 PASSWORD=$(pwgen -snc $LENGTH 1)
+fi
 qrencode -s 10 "$PASSWORD" -o qrpass.png
-fi
-fi
 if [[ $KEEP = true ]]; then
 echo "$PASSWORD"
 fi
