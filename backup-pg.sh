@@ -1,8 +1,8 @@
 #!/bin/sh
 
 mount /dev/sda6 /mnt/BACKUPS # change partition name to yours
-FILES=$(find . -maxdepth 1 -type f | wc -l)
-if [ "$FILES" -lt "30" ] # number of backup files
+AV_SPACE=$(df -Ph /mnt/BACKUPS | tail -1 |awk '{gsub ( "[G]","" ) ; print $4}')
+if [ "$AV_SPACE" -gt "18" ] # check available space and if it greater than 18G do backup without removing one old buckup file
 	then
 		slug=$(date +"%T_%d_%m_%Y")
 		sudo -u postgres psql -c '\l' > "/mnt/BACKUPS/dumpall_postgres/list_$slug" #list of all databases
