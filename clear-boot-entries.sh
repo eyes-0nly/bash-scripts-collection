@@ -2,5 +2,5 @@
 
 for entry in "$@"
 do
-wc efibootmgr -b $entry -B
+efibootmgr -b $entry -B
 done
